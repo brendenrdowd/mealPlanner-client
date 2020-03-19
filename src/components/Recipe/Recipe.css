@@ -1,0 +1,38 @@
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px; /* 5px rounded corners */
+  margin:1rem auto;
+  width:100%;
+  text-align: center;
+}
+
+@media(min-width:500px){
+  .card{
+    width:90%
+  }
+}
+@media(min-width:769px){
+  .card{
+    width:80%
+  }
+}
+@media(min-width:991px){
+  .card{
+    width:60%
+  }
+}
+@media(min-width:1200px){
+  .card{
+    width:50%
+  }
+}
+.card-body{
+  padding:1rem;
+}
+
+/* Add rounded corners to the top left and the top right corner of the image */
+img {
+  border-radius: 5px 5px 0 0;
+  width:100%;
+}

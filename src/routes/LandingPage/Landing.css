@@ -1,0 +1,19 @@
+
+section{
+  width:70%
+}
+p{
+  margin:1em;
+}
+.buttonbar{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.preamble{
+  display: block;
+}
+/* .onboard{
+  border-radius:5%;
+  background-color:rgba(128,128,128,0.5)
+} */

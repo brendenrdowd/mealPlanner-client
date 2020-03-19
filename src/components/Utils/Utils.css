@@ -1,0 +1,67 @@
+
+.Hyph {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.Input,
+.Textarea,select,input {
+  border: 1px solid #ddd;
+  display: block;
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  padding: 10px;
+  text-align: left;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.Input::placeholder,
+.Textarea::placeholder {
+  color: #ccc;
+}
+
+.Textarea {
+  resize: vertical;
+}
+
+.Button{
+  border: none;
+  margin :0.5em;
+  background: #404040;
+  color: #ffffff !important;
+  font-weight: 100;
+  padding: 20px;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 6px;
+  display: inline-block;
+  transition: all 0.3s ease 0s;
+}
+
+.Button:hover {
+  color: #404040 !important;
+  font-weight: 700 !important;
+  letter-spacing: 3px;
+  background: none;
+  cursor: pointer;
+  box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  transition: all 0.3s ease 0s;
+}
+
+.Required {
+  color: #CA1551;
+  font-family: Arial;
+  font-weight: bold;
+}
+
+.Section {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.Section--list {
+  margin-left: 10px;
+  margin-right: 10px;
+}

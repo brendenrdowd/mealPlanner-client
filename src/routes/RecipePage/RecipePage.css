@@ -1,0 +1,37 @@
+.recipe{
+  text-align: center;
+  margin:auto;
+}
+.recipe-list-item{
+  line-height: 1.5rem;
+  margin:1em 0;
+}
+ol,ul{
+  text-align: left;
+}
+
+.ingredient-table {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: left;
+}
+
+.ingredient-table td, .ingredient-table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.ingredient-table tr:nth-child(even){background-color: #f2f2f2;}
+
+.ingredient-table tr:hover {background-color: #ddd;}
+
+.ingredient-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+input[type=checkbox]{
+  width:1em;
+}
