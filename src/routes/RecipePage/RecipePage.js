@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import ApiContext from '../../ApiContext'
+import ApiContext from '../../contexts/ApiContext'
 import './RecipePage.css'
 import RecipeApiService from '../../services/recipe-api-service'
-import Link from 'react-router-dom'
-import DatePicker from 'react-date-picker';
+// import Link from 'react-router-dom'
+// import DatePicker from 'react-date-picker';
 
 export class recipePage extends Component {
   state = {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './Recipe.css'
 import { Link } from 'react-router-dom'
-import ApiContext from './../../ApiContext'
+import ApiContext from '../../contexts/ApiContext'
 
 export class recipe extends Component {
   static contextType = ApiContext;

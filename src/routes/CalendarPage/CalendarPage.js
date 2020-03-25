@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Calendar from 'react-calendar'
-import ApiContext from './../../ApiContext'
+import ApiContext from '../../contexts/ApiContext'
 import { Link } from 'react-router-dom'
 import 'react-calendar/dist/Calendar.css'
 import './Calendar.css'

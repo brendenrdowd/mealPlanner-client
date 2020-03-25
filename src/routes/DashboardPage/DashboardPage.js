@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import './Dashboard.css'
 import Recipe from '../../components/Recipe/Recipe'
-import ApiContext from '../../ApiContext'
+import ApiContext from '../../contexts/ApiContext'
 import UserService from '../../services/user-api-service'
 
 export class DashboardPage extends Component {

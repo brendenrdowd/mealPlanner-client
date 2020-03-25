@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom'
-import ApiContext from '../../ApiContext'
+import ApiContext from '../../contexts/ApiContext'
 // import UserService from '../../services/user-api-service'
 import dummystore from '../../dummystore'
 import PrivateRoute from '../Utils/PrivateRoute'

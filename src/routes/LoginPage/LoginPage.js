@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import LoginForm from '../../components/LoginForm/LoginForm'
 import { Section } from '../../components/Utils/Utils'
-import ApiContext from '../../ApiContext'
+import ApiContext from '../../contexts/ApiContext'
 import UserService from '../../services/user-api-service'
 
 export default class LoginPage extends Component {

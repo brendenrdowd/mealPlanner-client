@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ApiContext from '../../ApiContext'
+import ApiContext from '../../contexts/ApiContext'
 import Recipe from './../../components/Recipe/Recipe'
 
 export class ResultPage extends Component {
