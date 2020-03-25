@@ -3,19 +3,33 @@ import { Link } from 'react-router-dom'
 import './Dashboard.css'
 import Recipe from '../../components/Recipe/Recipe'
 import ApiContext from '../../ApiContext'
+import UserService from '../../services/user-api-service'
 
 export class DashboardPage extends Component {
   // I will need to use context.date to access saved recipes in calendar db
-
   static contextType = ApiContext;
+  state = {
+    username: '',
+    todaysRecipes:[]
+  }
+  componentDidMount() {
+    UserService.getUser()
+      .then(res => {
+        this.context.updateUser(res)
+        this.setState({
+          username: res.name.split(' ')[0]
+        })
+      })
+      // grab todaysRecipes
+  }
 
   render() {
-    const { recipes, user, date } = this.context
+    const { recipes, date } = this.context
+    const { username } = this.state
     const recipeList = recipes.map(r => {
       // replace props with context?
       return <Recipe key={r.id} recipe={r} />
     })
-    const username = user.name.split(' ')[0]
     return (
       <section className="Dashboard">
         <header>
@@ -31,7 +45,7 @@ export class DashboardPage extends Component {
         </header>
         <h3>TODAY'S MENU</h3>
         <ul className="recipes">
-          {recipeList.slice(0,3)}
+          {recipeList.slice(0, 3)}
         </ul>
       </section>
     )

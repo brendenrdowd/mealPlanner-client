@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom'
 import ApiContext from '../../ApiContext'
+// import UserService from '../../services/user-api-service'
 import dummystore from '../../dummystore'
-// import PrivateRoute from '../Utils/PrivateRoute'
+import PrivateRoute from '../Utils/PrivateRoute'
 import PublicOnlyRoute from '../Utils/PublicOnlyRoute'
 import Nav from '../Nav/Nav'
-import Calendar from 'react-calendar'
 
 import CalendarPage from '../../routes/CalendarPage/CalendarPage'
 import DashboardPage from '../../routes/DashboardPage/DashboardPage'
@@ -28,7 +28,7 @@ class App extends Component {
     searchResults: [],
     users: [],
     // will need to update state on log in
-    user: dummystore.users[0],
+    user: {},
     hasError: false,
     error: ""
   }
@@ -45,7 +45,6 @@ class App extends Component {
   }
   handleUpdateDate = date => {
     const yesterday = new Date(new Date().setDate(new Date().getDate()-1));
-    console.log("Yesterday: ", yesterday)
     if (date < yesterday) {
       this.setState({
         hasError: true,
@@ -58,6 +57,11 @@ class App extends Component {
         error: ""
       })
     }
+  }
+  handleUpdateUser = user =>{
+    return this.setState({
+      user
+    })
   }
 
   static getDerivedStateFromError(error) {
@@ -75,7 +79,8 @@ class App extends Component {
       users: this.state.users,
       user: this.state.user,
       updateSearchResults: this.handleSearchResults,
-      updateDate: this.handleUpdateDate
+      updateDate: this.handleUpdateDate,
+      updateUser: this.handleUpdateUser
     }
     return (
       <ApiContext.Provider value={value}>
@@ -97,29 +102,24 @@ class App extends Component {
                 path={'/register'}
                 component={RegistrationPage}
               />
-              {/* PrivateRoute */}
-              <Route
+              <PrivateRoute
                 path={'/calendar'}
                 component={CalendarPage}
               />
-              {/* PrivateRoute */}
-              <Route
+              <PrivateRoute
                 path={'/dashboard'}
                 component={DashboardPage}
               />
-              {/* private route */}
-              <Route
+              <PrivateRoute
                 path={'/search'}
                 exact
                 component={SearchPage}
               />
-              {/* PrivateRoute */}
-              <Route
+              <PrivateRoute
                 path={'/search/results'}
                 component={ResultPage}
               />
-              {/* PrivateRoute */}
-              <Route
+              <PrivateRoute
                 path={'/recipe/:recipeId'}
                 component={RecipePage}
               />

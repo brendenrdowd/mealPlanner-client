@@ -77,7 +77,7 @@ export default {
       "id":"1",
       "name": "John Doe",
       "email":"test@gmail.com",
-      "password":"Password",
+      "password":"$2a$12$rElD8EFoxq.Ncj9I24ix9OUPerIpx07ulHScWN12Vv1WxB5Dlvkt.",
       "intolerances":"spinach, nuts",
       "diet":""
     },
@@ -85,7 +85,7 @@ export default {
       "id":"2",
       "name":"Karen Sway",
       "email":"vegan@gmail.com",
-      "password":"Animals",
+      "password":"$2a$12$kJ90rrqyN.9g74mnjySVIOfsZjNVfjaCmjks4CR5XhsKGIYHWc5XK",
       "intolerances":"",
       "diet":"vegan"
     }

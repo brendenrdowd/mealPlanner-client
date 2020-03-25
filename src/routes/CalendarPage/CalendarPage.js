@@ -15,7 +15,6 @@ export class CalendarPage extends Component {
   selectDate = date => this.context.updateDate(date)
   render() {
     const { date } = this.context;
-    console.log(date)
     return (
       <section className="container calendar">
         <header>

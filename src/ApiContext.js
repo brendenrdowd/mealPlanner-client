@@ -10,5 +10,6 @@ export default React.createContext({
   users:[],
   user:{},
   updateSearchResults: () => {},
-  updateDate: () => {}
+  updateDate: () => {},
+  updateUser: () => {}
 })

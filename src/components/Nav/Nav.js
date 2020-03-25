@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import TokenService from '../../services/token-service'
 // taken from codepen, will update later, need to remove styles
 import Menu from './Menu'
 import MenuButton from './MenuButton'
@@ -11,9 +12,37 @@ class Nav extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      menuOpen: false,
+      menuOpen: false
     }
   }
+
+  handleLogoutClick = () => {
+    TokenService.clearAuthToken()
+  }
+
+  renderLogoutLink() {
+    return (
+      <Link
+        onClick={this.handleLogoutClick}
+        to='/'>
+        <FontAwesomeIcon icon="logout" />Log out
+      </Link>
+    )
+  }
+
+  renderLoginLink() {
+    return (
+      <Link
+        to='/login'>
+        Log in
+      </Link>,
+      <Link
+        to='/register'>
+        Register
+      </Link>
+    )
+  }
+
   handleMenuClick() {
     this.setState({ menuOpen: !this.state.menuOpen });
   }
@@ -38,7 +67,9 @@ class Nav extends Component {
       },
       logo: {
         margin: '0 auto',
-        fontFamily: 'Pacifico'
+        fontFamily: 'Pacifico',
+        textDecoration: 'none',
+        color: 'white'
       },
       body: {
         display: 'flex',
@@ -49,15 +80,18 @@ class Nav extends Component {
         filter: this.state.menuOpen ? 'blur(2px)' : null,
         transition: 'filter 0.5s ease',
       },
-      link:{
-        textDecoration:'none',
-        color:'white'
+      link: {
+        textDecoration: 'none',
+        color: 'white'
       }
     }
-    const menu = [<Link style={styles.link} to="/dashboard"><FontAwesomeIcon icon="home" /> Home</Link>,
+    let menu = [<Link style={styles.link} to="/dashboard"><FontAwesomeIcon icon="home" /> Home</Link>,
     <Link style={styles.link} to="/search"><FontAwesomeIcon icon="search" /> Search</Link>,
-    <Link style={styles.link} to="/"><FontAwesomeIcon icon="sign-out-alt" /> Logout</Link>
+    <Link style={styles.link} onClick={this.handleLogoutClick} to='/'><FontAwesomeIcon icon="sign-out-alt" /> Log out</Link>
     ]
+    // TokenService.hasAuthToken()
+    //   ? menu = [...menu,this.renderLogoutLink()]
+    //   : menu = [...menu,this.renderLoginLink()]
     const menuItems = menu.map((val, index) => {
       return (
         <MenuItem
@@ -70,7 +104,7 @@ class Nav extends Component {
       <div>
         <div style={styles.container}>
           <MenuButton open={this.state.menuOpen} onClick={() => this.handleMenuClick()} color='white' />
-          <div style={styles.logo}>Nutrionist</div>
+          <Link to="/" style={styles.logo}>Nutrionist</Link>
         </div>
         <Menu open={this.state.menuOpen}>
           {menuItems}

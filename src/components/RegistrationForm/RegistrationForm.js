@@ -11,24 +11,33 @@ export default class RegistrationForm extends Component {
 
   handleSubmit = ev => {
     ev.preventDefault()
-    const { full_name, nick_name, user_name, password } = ev.target
+    const { name, diet, email, password, confirm, interolances } = ev.target
 
     this.setState({ error: null });
+    // if(password !== confirm){
+    //   this.setState({ error: 'Passwords must match' })
+
+    // }
     AuthApiService.postUser({
-      user_name: user_name.value,
+      email: email.value,
       password: password.value,
-      full_name: full_name.value,
-      nickname: nick_name.value,
+      confirm:confirm.value,
+      name: name.value,
+      diet: diet.value,
+      interolances: interolances.value,
     })
-      .then(user => {
-        full_name.value = ''
-        nick_name.value = ''
-        user_name.value = ''
+    // should just replace this with the 
+      .then(res => {
+        name.value = ''
+        diet.value = ''
+        interolances.value = ''
+        email.value = ''
         password.value = ''
         this.props.onRegistrationSuccess()
       })
-      .catch(res =>{
-        this.setState({error:res.error})
+      // why isn't this triggering?
+      .catch(e => {
+        this.setState({ error: e})
       })
   }
 
@@ -36,21 +45,21 @@ export default class RegistrationForm extends Component {
     const { error } = this.state
     return (
       <form
-        
+
         onSubmit={this.handleSubmit}
       >
         <div role='alert'>
           {error && <p className='red'>{error}</p>}
         </div>
         <div>
-          <label htmlFor='RegistrationForm__full_name'>
+          <label htmlFor='RegistrationForm__name'>
             Full name <Required />
           </label>
           <Input
-            name='full_name'
+            name='name'
             type='text'
             required
-            id='RegistrationForm__full_name'>
+            id='RegistrationForm__name'>
           </Input>
         </div>
         <div >
@@ -76,30 +85,40 @@ export default class RegistrationForm extends Component {
           </Input>
         </div>
         <div >
-          <label htmlFor='RegistrationForm__confirm'>
+          <label htmlFor='confirm'>
             Confirm Password <Required />
           </label>
           <Input
             name='confirm'
             type='password'
             required
-            id='RegistrationForm__confirm'>
+            id='confirm'>
           </Input>
         </div>
-        {/* select for meal type */}
-        {/* select for cuisine */}
-        {/* <div className='nick_name'>
-          <label htmlFor='RegistrationForm__nick_name'>
-            Nickname
+        {/* select for interolances */}
+        <div>
+          <label htmlFor='RegistrationForm__interolances'>
+            Restrictions, Interolances or Allergies
           </label>
           <Input
-            name='nick_name'
+            name='interolances'
             type='text'
-            required
-            id='RegistrationForm__nick_name'>
+            id='interolances'>
           </Input>
-        </div> */}
-        <Button type='submit'>
+        </div>
+        {/* select for diet */}
+        <div>
+          <label htmlFor="diet">Diet</label>
+          <select id="diet">
+            <option value="">none</option>
+            <option value="paleo">Paleo</option>
+            <option value="pescetarian">Pescetarian</option>
+            <option value="primal">Primal</option>
+            <option value="vegan">Vegan</option>
+            <option value="vegetarian">Vegetarian</option>
+          </select>
+        </div>
+        <Button type='submit' className="submit-btn">
           Register
         </Button>
       </form>
