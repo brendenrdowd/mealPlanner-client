@@ -23,11 +23,9 @@ class App extends Component {
   state = {
     date: new Date(),
     complexResults: [],
-    // will need to change to a singular object
-    recipeInfo: [],
+    recipeInfo: {},
     searchResults: [],
     users: [],
-    // will need to update state on log in
     user: {},
     hasError: false,
     error: ""
@@ -82,6 +80,7 @@ class App extends Component {
       updateDate: this.handleUpdateDate,
       updateUser: this.handleUpdateUser
     }
+    console.log(this.state.user)
     return (
       <ApiContext.Provider value={value}>
         <div className="App container">

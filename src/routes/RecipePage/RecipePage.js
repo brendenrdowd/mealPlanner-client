@@ -2,23 +2,36 @@ import React, { Component } from 'react'
 import ApiContext from '../../contexts/ApiContext'
 import './RecipePage.css'
 import RecipeApiService from '../../services/recipe-api-service'
-// import Link from 'react-router-dom'
-// import DatePicker from 'react-date-picker';
+import RecipeForm from '../../components/RecipeForm/RecipeForm'
+
 
 export class recipePage extends Component {
   state = {
+    recipeId: "",
     recipe: {},
     steps: [],
-    ingredients: [],
-    date: new Date()
+    ingredients: []
   }
 
   static contextType = ApiContext;
+  static defaultProps = {
+    history: {
+      push: () => { },
+    },
+  }
+
+  handleSuccess = (res) => {
+    // might cause error, need to see res obj
+    this.context.updateDate(new Date(res.date))
+    this.props.history.push('/dashboard')
+  }
+
   componentDidMount() {
     const { recipeId } = this.props.match.params;
     RecipeApiService.getRecipeInfo(recipeId)
       .then(res => {
         this.setState({
+          recipeId,
           recipe: res,
           steps: res.analyzedInstructions[0].steps.map(step => {
             return <li className="recipe-list-item" key={step.number}>{step.number}. {step.step}</li>
@@ -35,24 +48,15 @@ export class recipePage extends Component {
       })
   }
 
-  onChange = date => this.setState({ date })
-
   render() {
-    const { recipe, steps, ingredients } = this.state
+    const { recipeId, recipe, steps, ingredients } = this.state
     return (
       <section className="recipe">
         <header>
           <img src={recipe.image} alt={recipe.title} />
           <h1>{recipe.title}</h1>
-          {/* form? */}
-          {/* add to calendar/ 'on calendar' toggle */}
-          {/* <DatePicker
-          onChange={this.onChange}
-          value={this.state.date}
-        /> */}
-        {/* end form? */}
-          {/* <Link></Link> */}
         </header>
+        <RecipeForm recipeId={recipeId} onSuccess={this.handleSuccess} />
         <div>
           <table className="ingredient-table">
             <tbody>

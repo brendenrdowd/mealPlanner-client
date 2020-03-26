@@ -1,4 +1,4 @@
-// import TokenService from '../services/token-service'
+import TokenService from '../services/token-service'
 import config from '../config'
 
 const RecipeApiService = {
@@ -23,19 +23,20 @@ const RecipeApiService = {
           : res.json()
       )
   },
-  // getTodaysRecipes from backend
-  // getRecipes() {
-  //   return fetch(`${config.API_ENDPOINT}/recipes`, {
-  //     headers: {
-  //       'authorization': `basic ${TokenService.getAuthToken()}`,
-  //     },
-  //   })
-  //     .then(res =>
-  //       (!res.ok)
-  //         ? res.json().then(e => Promise.reject(e))
-  //         : res.json()
-  //     )
-  // },
+  // getRecipeByDate
+  getRecipes(date) {
+    console.log("Service:",date)
+    return fetch(`${config.API_ENDPOINT}/recipes/${date}`, {
+      headers: {
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
+      },
+    })
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+      )
+  },
   // getRecipeInfoById from food API
   getRecipeInfo(recipeId) {
     return fetch(`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${recipeId}/information`, {
@@ -52,25 +53,34 @@ const RecipeApiService = {
       )
   },
   // save recipe to calendar
-  // postReview(thingId, text, rating) {
-  //   return fetch(`${config.API_ENDPOINT}/reviews`, {
-  //     method: 'POST',
-  //     headers: {
-  //       'authorization': `bearer ${TokenService.getAuthToken()}`,
-  //       'content-type': 'application/json',
-  //     },
-  //     body: JSON.stringify({
-  //       thing_id: thingId,
-  //       rating,
-  //       text,
-  //     }),
-  //   })
-  //     .then(res =>
-  //       (!res.ok)
-  //         ? res.json().then(e => Promise.reject(e))
-  //         : res.json()
-  //     )
-  // }
+  postRecipe(userId, date,recipeId) {
+    return fetch(`${config.API_ENDPOINT}/recipes`, {
+      method: 'POST',
+      headers: {
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        user_id: userId,
+        date,
+        recipeId
+      }),
+    })
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+      )
+  },
+  // update recipe
+  deleteRecipe(recipeId){
+    return fetch(`${config.API_ENDPOINT}/recipes/${recipeId}`)
+    .then(res =>
+      (!res.ok)
+        ? res.json().then(e => Promise.reject(e))
+        : res.json()
+    )
+  }
 }
 
 export default RecipeApiService

@@ -2,11 +2,31 @@ import React, { Component } from 'react'
 import './Recipe.css'
 import { Link } from 'react-router-dom'
 import ApiContext from '../../contexts/ApiContext'
+import RecipeApiService from '../../services/recipe-api-service'
 
 export class recipe extends Component {
   static contextType = ApiContext;
+  state = {
+    recipe:{}
+  }
+
+  componentDidMount() {
+    RecipeApiService.getRecipeInfo(this.props.recipe)
+      .then(res => {
+        this.setState({
+          recipe: res
+        })
+      }).catch(e => {
+        this.setState({ error: e })
+      })
+  }
+
+  deleteRecipe = recipeId => {
+    RecipeApiService.deleteRecipe(recipeId)
+  }
+
   render() {
-    const { image, title, id } = this.props.recipe
+    const { image, title, id } = this.state.recipe
     return (
       <li className="recipe-item">
         <Link className="link" to={'/recipe/' + id}>
@@ -17,6 +37,7 @@ export class recipe extends Component {
             </div>
           </div>
         </Link>
+        <button class="CTA" onClick={this.deleteRecipe(id)}>Delete</button>
       </li>
     )
   }

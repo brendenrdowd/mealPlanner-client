@@ -4,13 +4,15 @@ import './Dashboard.css'
 import Recipe from '../../components/Recipe/Recipe'
 import ApiContext from '../../contexts/ApiContext'
 import UserService from '../../services/user-api-service'
+import RecipeApiService from '../../services/recipe-api-service'
 
 export class DashboardPage extends Component {
   // I will need to use context.date to access saved recipes in calendar db
   static contextType = ApiContext;
   state = {
     username: '',
-    todaysRecipes:[]
+    recipes: [],
+    error: ""
   }
   componentDidMount() {
     UserService.getUser()
@@ -20,16 +22,33 @@ export class DashboardPage extends Component {
           username: res.name.split(' ')[0]
         })
       })
-      // grab todaysRecipes
+    RecipeApiService.getRecipes(this.convertToSQLTime())
+      .then(res => {
+        console.log("recipes:", res)
+        this.setState({
+          recipes: res.recipes.split(',')
+        })
+      })
+      .catch(e => {
+        this.setState({ error: e.error })
+      })
+  }
+
+  convertToSQLTime() {
+    return new Date(this.context.date).toISOString().slice(0, 19).replace('T', ' ');
   }
 
   render() {
-    const { recipes, date } = this.context
-    const { username } = this.state
-    const recipeList = recipes.map(r => {
-      // replace props with context?
-      return <Recipe key={r.id} recipe={r} />
-    })
+    const { date } = this.context
+    // move recipes to state
+    const { username, recipes, error } = this.state
+    let recipeList
+    if(recipes.length < 1){
+      recipeList = <Link to="/search" className="CTA"><h5>Let's find some recipes</h5></Link>
+    }
+    else{recipeList = recipes.map(r => {
+      return <Recipe key={r} recipe={r} />
+    })}
     return (
       <section className="Dashboard">
         <header>
@@ -44,8 +63,11 @@ export class DashboardPage extends Component {
           {/* <Link to="" className="Button">Groceries</Link> */}
         </header>
         <h3>TODAY'S MENU</h3>
+        <div role='alert'>
+          {error && <p className='red'>{error}</p>}
+        </div>
         <ul className="recipes">
-          {recipeList.slice(0, 3)}
+          {recipeList}
         </ul>
       </section>
     )

@@ -3,6 +3,11 @@
   box-sizing: content-box;
   margin:auto;
 }
+.recipes{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
 .link{
   margin:auto;
@@ -51,4 +56,30 @@
 
 .suffix{
   display: block;
+}
+
+.CTA{
+  border: none;
+  margin :0.5em;
+  background: rgb(149, 2, 2);
+  color: #ffffff !important;
+  font-weight: 100;
+  padding: 20px;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 6px;
+  display: inline-block;
+  transition: all 0.3s ease 0s;
+}
+
+.CTA:hover {
+  color: #404040 !important;
+  font-weight: 700 !important;
+  letter-spacing: 3px;
+  background: none;
+  cursor: pointer;
+  box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+  transition: all 0.3s ease 0s;
 }

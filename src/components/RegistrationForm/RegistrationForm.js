@@ -41,6 +41,9 @@ export default class RegistrationForm extends Component {
       })
   }
 
+  // change interolances to a select field 
+  // dairy, egg, gluten, peanut, sesame, seafood, shellfish, soy, sulfite, tree nut, and wheat
+
   render() {
     const { error } = this.state
     return (

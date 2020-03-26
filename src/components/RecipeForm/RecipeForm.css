@@ -1,0 +1,7 @@
+form{
+  margin:1rem auto;
+}
+
+form > * {
+  margin:1em 0; 
+}
