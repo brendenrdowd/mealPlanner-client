@@ -5,6 +5,7 @@
   margin:1rem auto;
   width:100%;
   text-align: center;
+  padding-bottom: 1rem;;
 }
 
 @media(min-width:500px){
