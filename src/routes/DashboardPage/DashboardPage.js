@@ -1,19 +1,26 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import './Dashboard.css'
+import history from '../../history'
 import Recipe from '../../components/Recipe/Recipe'
 import ApiContext from '../../contexts/ApiContext'
 import UserService from '../../services/user-api-service'
 import RecipeApiService from '../../services/recipe-api-service'
+import './Dashboard.css'
 
 export class DashboardPage extends Component {
-  // I will need to use context.date to access saved recipes in calendar db
   static contextType = ApiContext;
   state = {
     username: '',
     recipes: [],
     error: ""
   }
+
+  static defaultProps = {
+    history: {
+      push: () => { },
+    },
+  }
+
   componentDidMount() {
     UserService.getUser()
       .then(res => {
@@ -23,32 +30,47 @@ export class DashboardPage extends Component {
         })
       })
     RecipeApiService.getRecipes(this.convertToSQLTime())
-      .then(res => {
-        console.log("recipes:", res)
-        this.setState({
-          recipes: res.recipes.split(',')
-        })
+      .then(results => results.map(recipe => {
+        return RecipeApiService.getRecipeInfo(recipe.recipes)
+          .then(res => {
+            Object.assign(res, { recipeId: recipe.id });
+            this.setState({
+              recipes: [
+                ...this.state.recipes,
+                res
+              ]
+            })
+          }).catch(e => {
+            this.setState({ error: e.error })
+          })
       })
-      .catch(e => {
+      ).catch(e => {
         this.setState({ error: e.error })
       })
   }
-
+  // don't feel like I need this now that I refactored the backend, but it breaks without it despite that?
   convertToSQLTime() {
     return new Date(this.context.date).toISOString().slice(0, 19).replace('T', ' ');
   }
+  // path history rerender?
+  onDelete = () => {
+    history.push('/')
+    console.log("delete")
+  }
+
 
   render() {
     const { date } = this.context
-    // move recipes to state
     const { username, recipes, error } = this.state
     let recipeList
-    if(recipes.length < 1){
+    if (recipes.length === 0) {
       recipeList = <Link to="/search" className="CTA"><h5>Let's find some recipes</h5></Link>
     }
-    else{recipeList = recipes.map(r => {
-      return <Recipe key={r} recipe={r} />
-    })}
+    else {
+      recipeList = recipes.map(r => {
+        return <Recipe delete={this.onDelete} key={r.id} recipe={r} inDatabase={true} />
+      })
+    }
     return (
       <section className="Dashboard">
         <header>

@@ -25,8 +25,7 @@ const RecipeApiService = {
   },
   // getRecipeByDate
   getRecipes(date) {
-    console.log("Service:",date)
-    return fetch(`${config.API_ENDPOINT}/recipes/${date}`, {
+    return fetch(`${config.API_ENDPOINT}/recipes/${date.split(' ')[0]}`, {
       headers: {
         'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
@@ -53,7 +52,7 @@ const RecipeApiService = {
       )
   },
   // save recipe to calendar
-  postRecipe(userId, date,recipeId) {
+  postRecipe(userId, date, recipeId) {
     return fetch(`${config.API_ENDPOINT}/recipes`, {
       method: 'POST',
       headers: {
@@ -73,13 +72,19 @@ const RecipeApiService = {
       )
   },
   // update recipe
-  deleteRecipe(recipeId){
-    return fetch(`${config.API_ENDPOINT}/recipes/${recipeId}`)
-    .then(res =>
-      (!res.ok)
-        ? res.json().then(e => Promise.reject(e))
-        : res.json()
-    )
+  deleteRecipe(recipeId) {
+    return fetch(`${config.API_ENDPOINT}/recipes/${recipeId}`, {
+      method: 'DELETE',
+      headers: {
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
+        'content-type': 'application/json',
+      }
+    })
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+      )
   }
 }
 

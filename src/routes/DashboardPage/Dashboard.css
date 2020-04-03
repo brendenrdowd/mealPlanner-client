@@ -60,6 +60,7 @@
 
 .CTA{
   border: none;
+  text-align: center;
   margin :0.5em;
   background: rgb(149, 2, 2);
   color: #ffffff !important;

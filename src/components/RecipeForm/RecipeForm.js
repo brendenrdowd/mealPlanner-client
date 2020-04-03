@@ -10,7 +10,7 @@ import "react-datepicker/dist/react-datepicker.css";
 export class RecipeForm extends Component {
   static contextType = ApiContext;
   state = {
-    date: new Date()
+    date: this.context.date
   }
 
   onChange = date => this.setState({ date })
@@ -18,7 +18,6 @@ export class RecipeForm extends Component {
   handleSubmit = ev => {
     ev.preventDefault()
     const userId = this.context.user.id
-    console.log(userId)
     const { date } = this.state
     const { recipeId } = this.props
     RecipeApiService.postRecipe(userId, date, recipeId)
@@ -38,7 +37,7 @@ export class RecipeForm extends Component {
             clearAriaLabel="true"
             dayAriaLabel="true"
           />
-        <Button type='submit' className="submit-btn">
+        <Button type='submit' className="cal-btn">
           Save
         </Button>
       </form >

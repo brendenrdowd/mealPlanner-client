@@ -13,6 +13,7 @@ export class CalendarPage extends Component {
     },
   }
   selectDate = date => this.context.updateDate(date)
+
   render() {
     const { date } = this.context;
     return (

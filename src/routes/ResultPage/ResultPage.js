@@ -8,8 +8,7 @@ export class ResultPage extends Component {
   render() {
     const { searchResults} = this.context;
     const recipeList = searchResults.map(r => {
-      // replace props with context?
-      return <Recipe key={r.id} recipe={r} />
+      return <Recipe key={r.id} recipe={r} inDatabase={false} />
     })
     return (
       <section className="container">

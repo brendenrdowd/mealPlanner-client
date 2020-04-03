@@ -21,8 +21,6 @@ export class recipePage extends Component {
   }
 
   handleSuccess = (res) => {
-    // might cause error, need to see res obj
-    this.context.updateDate(new Date(res.date))
     this.props.history.push('/dashboard')
   }
 
@@ -33,9 +31,9 @@ export class recipePage extends Component {
         this.setState({
           recipeId,
           recipe: res,
-          steps: res.analyzedInstructions[0].steps.map(step => {
+          steps: (res.analyzedInstructions[0]) && res.analyzedInstructions[0].steps.map(step => {
             return <li className="recipe-list-item" key={step.number}>{step.number}. {step.step}</li>
-          }) || [],
+          }),
           ingredients: res.extendedIngredients.map(ingredient => {
             return <tr key={ingredient.id}>
               <td>
@@ -56,6 +54,7 @@ export class recipePage extends Component {
           <img src={recipe.image} alt={recipe.title} />
           <h1>{recipe.title}</h1>
         </header>
+        {/* need to add the ternary check */}
         <RecipeForm recipeId={recipeId} onSuccess={this.handleSuccess} />
         <div>
           <table className="ingredient-table">

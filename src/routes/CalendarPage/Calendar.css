@@ -24,7 +24,8 @@ hr{
   }
   @media(min-width:770px){
     .cal-btn{
-      width:60%
+      width:60%;
+      margin:1em 1em !important;
     }
   }
   @media(min-width:992px){

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom'
 import ApiContext from '../../contexts/ApiContext'
 // import UserService from '../../services/user-api-service'
-import dummystore from '../../dummystore'
 import PrivateRoute from '../Utils/PrivateRoute'
 import PublicOnlyRoute from '../Utils/PublicOnlyRoute'
 import Nav from '../Nav/Nav'
@@ -21,7 +20,7 @@ import './App.css'
 
 class App extends Component {
   state = {
-    date: new Date(),
+    date: this.convertUTCDateToLocalDate(new Date()),
     complexResults: [],
     recipeInfo: {},
     searchResults: [],
@@ -30,9 +29,10 @@ class App extends Component {
     hasError: false,
     error: ""
   }
-  // will replace with fetch from backend
-  componentDidMount() {
-    this.setState(dummystore)
+
+  static getDerivedStateFromError(error) {
+    console.error(error)
+    return { hasError: true }
   }
 
   // handlers, will move to own file later
@@ -41,33 +41,34 @@ class App extends Component {
       searchResults: results
     })
   }
+  convertUTCDateToLocalDate(date) {
+    var newDate = new Date(date.getTime() - date.getTimezoneOffset() * 60 * 1000);
+    return newDate;
+  }
   handleUpdateDate = date => {
-    const yesterday = new Date(new Date().setDate(new Date().getDate()-1));
-    if (date < yesterday) {
+    const localDate = this.convertUTCDateToLocalDate(date)
+    const yesterday = new Date(new Date().setDate(new Date().getDate() - 1));
+    if (localDate < yesterday) {
       this.setState({
         hasError: true,
         error: "Pick a future time"
       })
     } else {
       this.setState({
-        date,
+        date:date,
         hasError: false,
         error: ""
       })
     }
   }
-  handleUpdateUser = user =>{
+  handleUpdateUser = user => {
     return this.setState({
       user
     })
   }
 
-  static getDerivedStateFromError(error) {
-    console.error(error)
-    return { hasError: true }
-  }
-
   render() {
+    console.log(this.state.date)
     const value = {
       date: this.state.date,
       error: this.state.error,
@@ -78,9 +79,8 @@ class App extends Component {
       user: this.state.user,
       updateSearchResults: this.handleSearchResults,
       updateDate: this.handleUpdateDate,
-      updateUser: this.handleUpdateUser
+      updateUser: this.handleUpdateUser,
     }
-    console.log(this.state.user)
     return (
       <ApiContext.Provider value={value}>
         <div className="App container">
