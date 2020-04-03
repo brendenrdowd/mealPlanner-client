@@ -55,7 +55,6 @@ export class DashboardPage extends Component {
   // path history rerender?
   onDelete = () => {
     history.push('/')
-    console.log("delete")
   }
 
 

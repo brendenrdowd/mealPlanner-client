@@ -68,7 +68,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.date)
     const value = {
       date: this.state.date,
       error: this.state.error,

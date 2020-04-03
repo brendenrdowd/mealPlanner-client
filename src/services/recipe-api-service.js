@@ -56,7 +56,7 @@ const RecipeApiService = {
     return fetch(`${config.API_ENDPOINT}/recipes`, {
       method: 'POST',
       headers: {
-        'authorization': `bearer ${TokenService.getAuthToken()}`,
+        'authorization': `basic ${TokenService.getAuthToken()}`,
         'content-type': 'application/json',
       },
       body: JSON.stringify({

@@ -13,12 +13,10 @@ export class recipe extends Component {
   }
 
   handleSuccess = (res) => {
-    console.log(res)
     this.props.history.push('/dashboard')
   }
 
   deleteRecipe = recipeId => {
-    console.log("delete: ",recipeId,this.props)
     RecipeApiService.deleteRecipe(recipeId)
     .then(
       this.props.delete()
@@ -26,7 +24,6 @@ export class recipe extends Component {
   }
 
   render() {
-    console.log(this.props)
     const { image, title, id,recipeId } = this.props.recipe
     const recipeButton = (this.props.inDatabase) ? <button className="CTA" onClick={this.deleteRecipe.bind(this,recipeId)}>Delete</button> : <Link className="link Button" to={'/recipe/' + id}>View Recipe</Link>//<RecipeForm recipeId={recipeId} onSuccess={this.handleSuccess} />
     return (
