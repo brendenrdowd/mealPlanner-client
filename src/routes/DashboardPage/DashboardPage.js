@@ -31,7 +31,7 @@ export class DashboardPage extends Component {
       })
     RecipeApiService.getRecipes(this.convertToSQLTime())
       .then(results => results.map(recipe => {
-        return RecipeApiService.getRecipeInfo(recipe.recipes)
+        return RecipeApiService.getRecipeInfo(recipe.recipe)
           .then(res => {
             Object.assign(res, { recipeId: recipe.id });
             this.setState({
