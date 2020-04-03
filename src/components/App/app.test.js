@@ -8,13 +8,15 @@ import { faSignOutAlt, faHome,faSearch,faBars } from '@fortawesome/free-solid-sv
 
 library.add(fab,faSignOutAlt,faHome,faSearch,faBars )
 
-it('renders without crashing', () => {
-  const div = document.createElement('div')
-  ReactDOM.render(
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>,
-    div
-  )
-  ReactDOM.unmountComponentAtNode(div)
+describe('App',()=>{
+  it('renders without crashing', () => {
+    const div = document.createElement('div')
+    ReactDOM.render(
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>,
+      div
+    )
+    ReactDOM.unmountComponentAtNode(div)
+  })
 })

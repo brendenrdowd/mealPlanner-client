@@ -19,7 +19,7 @@
   /* border:1px solid black; */
   width:40%;
   margin:auto;
-  box-shadow: 1px 1px 20px 3px #ccc;
+  box-shadow: 1px 1px 20px 3px #522424;
 }
 @media(min-width:500px){
   .date-card{
@@ -50,8 +50,11 @@
   padding: 5px 0;
 }
 .banner{
-  background-color:rgba(204,0,0,0.7);
+  background-color:#c53a3a;
   color:white;
+}
+.calendar-page{
+  background-color: white;
 }
 
 .suffix{

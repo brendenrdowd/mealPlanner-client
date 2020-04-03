@@ -8,6 +8,10 @@
   padding-bottom: 1rem;;
 }
 
+.card, .card-body{
+  background-color:white
+}
+
 @media(min-width:500px){
   .card{
     width:90%

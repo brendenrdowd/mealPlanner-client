@@ -57,7 +57,6 @@ export class DashboardPage extends Component {
     history.push('/')
   }
 
-
   render() {
     const { date } = this.context
     const { username, recipes, error } = this.state
@@ -77,16 +76,17 @@ export class DashboardPage extends Component {
           <Link to="/calendar" className="link">
             <div className="date-card">
               <h5 className="banner">{date.toDateString().split(' ')[1]}</h5>
-              <h1>{date.getDate()}</h1>
+              <h1 className="calendar-page">{date.getDate()}</h1>
               <h5 className="banner">{date.getFullYear()}</h5>
             </div>
           </Link>
           {/* <Link to="" className="Button">Groceries</Link> */}
-        </header>
-        <h3>TODAY'S MENU</h3>
+        <h3 className="today">TODAY'S MENU</h3>
+        <hr />
         <div role='alert'>
           {error && <p className='red'>{error}</p>}
         </div>
+        </header>
         <ul className="recipes">
           {recipeList}
         </ul>
