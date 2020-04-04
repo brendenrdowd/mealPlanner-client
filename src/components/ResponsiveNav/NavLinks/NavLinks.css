@@ -2,7 +2,7 @@
   .tooltip {
     position: relative;
     display: inline-block;
-    border-bottom: 1px dotted black; 
+    border-bottom: 1px dotted black;
   }
 
   /* Tooltip text */
@@ -16,7 +16,7 @@
     border-radius: 6px;
     top: 100%;
     left: 50%;
-    margin-left: -60px; 
+    margin-left: -60px;
     margin-top:1rem;
     position: absolute;
     z-index: 1;
