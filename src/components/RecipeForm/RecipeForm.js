@@ -10,7 +10,7 @@ import "react-datepicker/dist/react-datepicker.css";
 export class RecipeForm extends Component {
   static contextType = ApiContext;
   state = {
-    date: this.context.date
+    date: ""
   }
 
   onChange = date => this.setState({ date })
@@ -27,6 +27,9 @@ export class RecipeForm extends Component {
       .catch(this.context.setError)
   }
 
+  componentDidMount(){
+    this.setState({date:this.context.date})
+  }
   render() {
     return (
       < form onSubmit={this.handleSubmit} >

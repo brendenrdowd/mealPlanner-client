@@ -88,3 +88,10 @@ img{
   color:white;
 }
 
+.toolbar__logo a, .brand{
+  font-family: 'Pacifico', cursive;
+}
+
+.obb{
+ text-align: center;
+}

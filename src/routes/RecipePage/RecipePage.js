@@ -34,8 +34,8 @@ export class recipePage extends Component {
           steps: (res.analyzedInstructions[0]) && res.analyzedInstructions[0].steps.map(step => {
             return <li className="recipe-list-item" key={step.number}>{step.number}. {step.step}</li>
           }),
-          ingredients: res.extendedIngredients.map(ingredient => {
-            return <tr key={ingredient.id}>
+          ingredients: res.extendedIngredients.map((ingredient,index) => {
+            return <tr key={index}>
               <td>
                 <input type="checkbox" name={ingredient.original} id={ingredient.id} />
               </td>
