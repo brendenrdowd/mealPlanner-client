@@ -1,10 +1,7 @@
   
 import React from 'react';
-import { shallow, configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import { shallow } from 'enzyme';
 import Recipe from './Recipe';
-
-configure({ adapter: new Adapter() });
 
 beforeAll(() => {
   const div = document.createElement('div');
@@ -20,6 +17,6 @@ describe('recipe component', ()=>{
       title: "Bison Burger"
     }
   
-    const container = shallow(<Recipe key={recipe.id} recipe={recipe} onDelete={() => {}} inDatabase={true}/>,{ attachTo: window.domNode });
+    const wrapper = shallow(<Recipe key={recipe.id} recipe={recipe} onDelete={() => {}} inDatabase={true}/>,{ attachTo: window.domNode });
   });
 })

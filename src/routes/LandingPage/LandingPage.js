@@ -5,11 +5,12 @@ import './Landing.css'
 export default function LandingPage() {
   return (
     <section className="container">
-      <header className="onboard">
+      <div className="onboard headline">
         <h1><span className="preamble">Welcome to</span> Nutrionist</h1>
+        <img className= "plate-logo" src="/logo.png" alt="nutrionist logo" />
         <h4>Nutrionist lets you find recipes based on ingredients, cusines, diets and more and add them to a weekly meal plan.</h4>
         <p>To get quickstarted, log in using the email 'test@gmail.com' and password 'Password', or 'vegan@gmail.com' and 'Animals'.</p>
-      </header>
+      </div >
       {/* fix button scaling on desktop */}
       <div className="buttonbar">
         <Link to='/login' className="Button">Log In</Link>

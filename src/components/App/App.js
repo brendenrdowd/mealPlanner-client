@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom'
 import ApiContext from '../../contexts/ApiContext'
-// import UserService from '../../services/user-api-service'
 import PrivateRoute from '../Utils/PrivateRoute'
 import PublicOnlyRoute from '../Utils/PublicOnlyRoute'
-import Nav from '../Nav/Nav'
-
+import Toolbar from '../ResponsiveNav/Toolbar/Toolbar'
+import SideDrawer from '../ResponsiveNav/SideDrawer/SideDrawer';
+import Backdrop from '../ResponsiveNav/Backdrop/Backdrop'
 import CalendarPage from '../../routes/CalendarPage/CalendarPage'
 import DashboardPage from '../../routes/DashboardPage/DashboardPage'
 import LandingPage from '../../routes/LandingPage/LandingPage'
@@ -27,7 +27,8 @@ class App extends Component {
     users: [],
     user: {},
     hasError: false,
-    error: ""
+    error: "",
+    sideDrawerOpen: false
   }
 
   static getDerivedStateFromError(error) {
@@ -55,7 +56,7 @@ class App extends Component {
       })
     } else {
       this.setState({
-        date:date,
+        date: date,
         hasError: false,
         error: ""
       })
@@ -64,6 +65,16 @@ class App extends Component {
   handleUpdateUser = user => {
     return this.setState({
       user
+    })
+  }
+
+  handleBackdropClose = () => {
+    this.setState({ sideDrawerOpen: false })
+  }
+
+  drawerToggleClickHander = () => {
+    this.setState((prevState) => {
+      return { sideDrawerOpen: !prevState.sideDrawerOpen }
     })
   }
 
@@ -79,11 +90,20 @@ class App extends Component {
       updateSearchResults: this.handleSearchResults,
       updateDate: this.handleUpdateDate,
       updateUser: this.handleUpdateUser,
+      toggleSideDrawer: this.drawerToggleClickHander,
+      closeBackdrop: this.handleBackdropClose
+    }
+    let backdrop
+    if (this.state.sideDrawerOpen) {
+      backdrop = <Backdrop />
     }
     return (
       <ApiContext.Provider value={value}>
         <div className="App container">
-          <Nav />
+          <Toolbar />
+          <SideDrawer show={this.state.sideDrawerOpen}/>
+          {backdrop}
+          {/* <Nav /> */}
           <main>
             {this.state.hasError && <p className='red'>{this.state.error}</p>}
             <Switch>

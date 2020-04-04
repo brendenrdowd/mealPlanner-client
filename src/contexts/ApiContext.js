@@ -11,5 +11,7 @@ export default React.createContext({
   user:{},
   updateSearchResults: () => {},
   updateDate: () => {},
-  updateUser: () => {}
+  updateUser: () => {},
+  toggleSideDrawer: () => {},
+  coseBackdrop: () => {}
 })

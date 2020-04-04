@@ -4,50 +4,12 @@
   font-family: 'Raleway', sans-serif;
   box-sizing: border-box;
 }
-
-/* container */
-.container {
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-  background-color: #b14e4e ;
-}
-
-@media (min-width: 576px) {
-  .container {
-    max-width: 540px;
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-    max-width: 720px;
-  }
-}
-
-@media (min-width: 992px) {
-  .container {
-    max-width: 960px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .container {
-    max-width: 1140px;
-  }
+body{
+  background-color: #b14e4e;
 }
 main{
-  margin-top:3rem;
+  margin-top:2rem;
 }
-header{
-  margin-bottom:1rem;
-  text-align: center;
-  /* padding:1rem; */
-  /* overflow: none; */
-}
-
 h1{
   font-size: 4rem;
   font-weight: 300;
@@ -71,6 +33,58 @@ h4{
 li{
   list-style-type: none;
 }
+img{
+  max-width:500px;
+}
+
+/* container */
+.container {
+  width: 100%;
+  padding: 1em 15px;
+  margin-right: auto;
+  margin-left: auto;
+  background-color:white;
+}
+.App.container{
+  min-height: 100vh;
+}
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+.headline{
+  margin-bottom:1rem;
+  text-align: center;
+  /* padding:1rem; */
+  /* overflow: none; */
+}
 .red{
   color:red;
 }
+
+.today{
+  margin-top:1em;
+}
+
+.link{
+  text-decoration: none;
+  color:white;
+}
+

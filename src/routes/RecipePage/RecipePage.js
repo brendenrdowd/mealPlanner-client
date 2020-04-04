@@ -50,10 +50,10 @@ export class recipePage extends Component {
     const { recipeId, recipe, steps, ingredients } = this.state
     return (
       <section className="recipe">
-        <header>
+        <div className="headline">
           <img src={recipe.image} alt={recipe.title} />
           <h1>{recipe.title}</h1>
-        </header>
+        </div>
         {/* need to add the ternary check */}
         <RecipeForm recipeId={recipeId} onSuccess={this.handleSuccess} />
         <div>

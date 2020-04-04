@@ -12,9 +12,9 @@ export class ResultPage extends Component {
     })
     return (
       <section className="container">
-        <header>
+        <div className="headline">
           <h2>Results</h2>
-        </header>
+        </div>
         <ul>
           {recipeList}
         </ul>

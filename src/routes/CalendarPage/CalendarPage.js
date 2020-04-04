@@ -18,9 +18,9 @@ export class CalendarPage extends Component {
     const { date } = this.context;
     return (
       <section className="container calendar">
-        <header>
+        <div className="headline">
           <h2>Your Calendar</h2>
-        </header>
+        </div>
         <hr />
         <Calendar onChange={this.selectDate} value={date} />
         <Link className="Button cal-btn" to="/dashboard">See Plan</Link>

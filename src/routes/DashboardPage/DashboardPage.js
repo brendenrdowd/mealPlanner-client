@@ -71,7 +71,7 @@ export class DashboardPage extends Component {
     }
     return (
       <section className="Dashboard">
-        <header>
+        <div className="headline">
           <h2>{username}'s Meals <span className="suffix">for</span></h2>
           <Link to="/calendar" className="link">
             <div className="date-card">
@@ -86,7 +86,7 @@ export class DashboardPage extends Component {
         <div role='alert'>
           {error && <p className='red'>{error}</p>}
         </div>
-        </header>
+        </div>
         <ul className="recipes">
           {recipeList}
         </ul>

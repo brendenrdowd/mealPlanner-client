@@ -9,7 +9,8 @@
 }
 
 .card, .card-body{
-  background-color:white
+  background-color:white;
+  color:black;
 }
 
 @media(min-width:500px){

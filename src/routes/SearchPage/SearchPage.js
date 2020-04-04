@@ -15,9 +15,9 @@ export class SearchPage extends Component {
   render() {
     return (
       <section className="container">
-        <header>
+        <div className="headline">
         <h2>Find Recipes</h2>
-        </header>
+        </div>
         <SearchForm onSearchSuccess={this.handleSearchSuccess}/>
       </section>
     )
