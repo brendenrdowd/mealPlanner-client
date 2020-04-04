@@ -1,3 +1,5 @@
+[![CodeFactor](https://www.codefactor.io/repository/github/brendenrdowd/mealplanner-client/badge)](https://www.codefactor.io/repository/github/brendenrdowd/mealplanner-client)
+
 # Nutrionist 
 Nutrionist allows users to find and save recipes to their calendar. A live version can be found at [mealplan.now.sh](https://mealplan.now.sh/) 
 
