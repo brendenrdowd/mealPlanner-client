@@ -7,6 +7,10 @@ export class ResultPage extends Component {
 
   render() {
     const { searchResults} = this.context;
+    let error;
+    if (searchResults.length === 0){
+      error = <li className="red">No results found</li>
+    }
     const recipeList = searchResults.map(r => {
       return <Recipe key={r.id} recipe={r} inDatabase={false} />
     })
@@ -16,7 +20,7 @@ export class ResultPage extends Component {
           <h2>Results</h2>
         </div>
         <ul>
-          {recipeList}
+          {error ? error : recipeList}
         </ul>
       </section>
     )

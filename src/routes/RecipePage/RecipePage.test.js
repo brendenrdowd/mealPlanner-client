@@ -8,7 +8,7 @@ beforeAll(() => {
   document.body.appendChild(div);
 })
 
-describe('recipe component', () => {
+describe('recipe page', () => {
   it('renders without crashing', () => {
     const wrapper = shallow(<RecipePage match={{ params: { recipeId: 1 }, isExact: true, path: "", url: "" }} />, { attachTo: window.domNode });
   });

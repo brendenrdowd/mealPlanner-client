@@ -103,7 +103,6 @@ class App extends Component {
           <Toolbar />
           <SideDrawer show={this.state.sideDrawerOpen}/>
           {backdrop}
-          {/* <Nav /> */}
           <main>
             {this.state.hasError && <p className='red'>{this.state.error}</p>}
             <Switch>

@@ -11,10 +11,17 @@ A live version can be found at [mealplan.now.sh](https://mealplan.now.sh/)
 I have a hard time grocery shopping effectively and cooking meals for myself. I wanted a centralized way to find recipes based on ingredients and consolidate it into a calendar so a user can know exactly whats for dinner coming up and what ingredients they will need. 
 
 ## Screenshots
-To be gathered and added
+![landing page](readme/landing.png)
+![login page](readme/login.png)
+![registration page](readme/register.png)
+![Dashboard](readme/dashboard.png)
+![search](readme/search.png)
+![calendar](readme/calendar.png)
+![results](readme/results.png)
+![recipe](readme/recipe.png)
 
 ## Technologies
-Built using React (with enzyme, moment.js, and react-calendar), Node (using express, mocha, supertest, and knex ) and PostgreSQL. 
+Built using React (with enzyme, moment.js, and react-calendar, JWT), Node (using express, JWT, mocha, supertest, and knex ) and PostgreSQL. 
 
 ## API
 The API can be reached on Heroku, [here](https://dry-brushlands-83819.herokuapp.com/api), though it is a protected endpoint. The repository can be found [here](https://github.com/brendenrdowd/mealPlanner-api).

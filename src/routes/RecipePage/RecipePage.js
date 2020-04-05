@@ -52,7 +52,7 @@ export class recipePage extends Component {
       <section className="recipe">
         <div className="headline">
           <img src={recipe.image} alt={recipe.title} />
-          <h1>{recipe.title}</h1>
+          <h2>{recipe.title}</h2>
         </div>
         {/* need to add the ternary check */}
         <RecipeForm recipeId={recipeId} onSuccess={this.handleSuccess} />
