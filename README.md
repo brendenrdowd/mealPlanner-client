@@ -38,6 +38,11 @@ The API handles authenticating user information, retrieving user information fro
 ### Spoonacular API
 Currently I'm relying heavily on the RapidAPI spoonacular API. My hope is to integrate with a user interactive database and stop relying on the external API altogether. 
 
+### Upcoming Fixes
+ - input on recipe page above navbar
+ - clicking links toggles sidedrawer close
+ - 
+
 ### Future Features
 This is a project I will continue to work on,  my main goals are:
   - Add a consolidated grocery list
