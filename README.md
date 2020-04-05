@@ -12,12 +12,19 @@ I have a hard time grocery shopping effectively and cooking meals for myself. I 
 
 ## Screenshots
 ![landing page](/public/readme/landing.png)
+
 ![login page](/public/readme/login.png)
+
 ![registration page](/public/readme/register.png)
+
 ![Dashboard](/public/readme/dashboard.png)
+
 ![search](/public/readme/search.png)
+
 ![calendar](/public/calendar.png)
+
 ![results](/public/readme/results.png)
+
 ![recipe](/public/readme/recipe.png)
 
 ## Technologies
