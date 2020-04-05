@@ -25,6 +25,7 @@ export default class LoginPage extends Component {
       <Section className='LoginPage container'>
         <div className="headline">
           <h2>Login</h2>
+          <p>To get quickstarted, log in using the email 'test@gmail.com' and password 'Password'</p>
         </div>
         <LoginForm
           onLoginSuccess={this.handleLoginSuccess}

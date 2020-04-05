@@ -9,7 +9,6 @@ export default function LandingPage() {
         <h1 className="brand"><span className="preamble">Welcome to</span> Nutrionist</h1>
         <img className= "plate-logo" src="/logo.png" alt="nutrionist logo" />
         <h4>Nutrionist lets you find recipes based on ingredients, cusines, diets and more and add them to a weekly meal plan.</h4>
-        <p>To get quickstarted, log in using the email 'test@gmail.com' and password 'Password'</p>
       </div >
       {/* fix button scaling on desktop */}
       <div className="buttonbar">

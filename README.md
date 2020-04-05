@@ -17,18 +17,18 @@ I have a hard time grocery shopping effectively and cooking meals for myself. I 
 
 ![registration page](/public/readme/register.png)
 
-![Dashboard](/public/readme/dashboard.png)
+![Dashboard](/public/readme/Dashboard.png)
 
 ![search](/public/readme/search.png)
 
-![calendar](/public/calendar.png)
+![calendar](/public/readme/calendar.png)
 
 ![results](/public/readme/results.png)
 
 ![recipe](/public/readme/recipe.png)
 
 ## Technologies
-Built using React (with enzyme, moment.js, and react-calendar, JWT), Node (using express, JWT, mocha, supertest, and knex ) and PostgreSQL. 
+Built using React (with enzyme, moment.js, and react-calendar, JWT). 
 
 ## API
 The API can be reached on Heroku, [here](https://dry-brushlands-83819.herokuapp.com/api), though it is a protected endpoint. The repository can be found [here](https://github.com/brendenrdowd/mealPlanner-api).

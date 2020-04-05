@@ -15,6 +15,7 @@ export default class RegistrationForm extends Component {
     let { name, diet, email, password, confirm, interolances } = ev.target
     this.setState({ error: [] });
     let errors = []
+
     // validations
     if (password.value !== confirm.value) {
       errors = [
@@ -37,7 +38,7 @@ export default class RegistrationForm extends Component {
     }
     if (errors.length > 0)
       return this.setState({ error: errors })
-
+    // if validaitons pass, create a new user from user entered fields. 
     AuthApiService.postUser({
       email: email.value,
       password: password.value,
@@ -46,7 +47,7 @@ export default class RegistrationForm extends Component {
       diet: diet.value,
       interolances: interolances.value,
     })
-      // should just replace this with the 
+    // and then reset fields, if its successful, we'll move to the next page with the onRegistrationSuccess function
       .then(res => {
         name.value = ''
         diet.value = ''
@@ -55,7 +56,6 @@ export default class RegistrationForm extends Component {
         password.value = ''
         this.props.onRegistrationSuccess()
       })
-      // why isn't this triggering?
       .catch(e => {
         this.setState({ error: [e] })
       })
@@ -63,7 +63,6 @@ export default class RegistrationForm extends Component {
 
   render() {
     const { error } = this.state
-    console.log(error)
     let errors
     if (error.length > 0) {
       errors = error.map((e, idx) => {
