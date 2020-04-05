@@ -11,14 +11,14 @@ A live version can be found at [mealplan.now.sh](https://mealplan.now.sh/)
 I have a hard time grocery shopping effectively and cooking meals for myself. I wanted a centralized way to find recipes based on ingredients and consolidate it into a calendar so a user can know exactly whats for dinner coming up and what ingredients they will need. 
 
 ## Screenshots
-![landing page](/readme/landing.png)
-![login page](/readme/login.png)
-![registration page](/readme/register.png)
-![Dashboard](/readme/dashboard.png)
-![search](/readme/search.png)
-![calendar](//calendar.png)
-![results](/readme/results.png)
-![recipe](/readme/recipe.png)
+![landing page](/public/readme/landing.png)
+![login page](/public/readme/login.png)
+![registration page](/public/readme/register.png)
+![Dashboard](/public/readme/dashboard.png)
+![search](/public/readme/search.png)
+![calendar](/public/calendar.png)
+![results](/public/readme/results.png)
+![recipe](/public/readme/recipe.png)
 
 ## Technologies
 Built using React (with enzyme, moment.js, and react-calendar, JWT), Node (using express, JWT, mocha, supertest, and knex ) and PostgreSQL. 
